@@ -158,6 +158,8 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.onClickSubmit = function () {
         this.service.addExpense(new Date(this.inputDate), this.inputAmount);
+        this.inputAmount = null;
+        this.inputDate = null;
         this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
         this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
     };
