@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Daily Expenses Tracker</span>
+</nav>
+<div class="container">
+  <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+        {{ dailyExpensesLimit | currency: 'R' }} per day ({{ dailyExpensesLimitAdvanced | currency: 'R' }})
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-sm">
+      <div [chart]="chart"></div>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="txtDate">Date</label>
+        <input [(ngModel)]="inputDate" type="date" class="form-control" id="txtDate">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="txtAmount">Amount</label>
+        <input [(ngModel)]="inputAmount" type="number" class="form-control" id="txtAmount">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <button (click)="onClickSubmit()" class="btn btn-primary form-control">Submit</button>
+    </div>
+  </div>
+</div>
