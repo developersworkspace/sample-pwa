@@ -5,7 +5,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache
-        .addAll(['/', 'index.html', `runtime.js`, `polyfills.js`, `styles.js`, 'vendor.js', `main.js`, `assets/bootstrap.min.css`])
+        .addAll(['index.html', `runtime.js`, `polyfills.js`, `styles.js`, 'vendor.js', `main.js`, `assets/bootstrap.min.css`])
         .then(() => self.skipWaiting());
     })
   );
