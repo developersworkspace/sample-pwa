@@ -1,10 +1,13 @@
 {
     "name": "Daily Expense Tracker",
     "short_name": "Daily Expense Tracker",
-    "start_url": "/",
-    "scope": "/",
+    "start_url": "/sample-pwa/DailyExpensesTracker/dist/DailyExpensesTracker/index.html",
     "display": "standalone",
-    "background_color": "#2196F3",
-    "theme_color": "#2196F3"
+    "background_color": "#fff",
+    "icons": [{
+      "src": "assets/icon256.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }]
   }
   
