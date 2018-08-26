@@ -3,7 +3,7 @@ import { Repository } from './repository';
 export class Service {
   protected repository: Repository = new Repository();
 
-  protected total = 4000;
+  protected total = 3200;
 
   public addExpense(date: Date, amount: number): void {
     this.repository.insert({

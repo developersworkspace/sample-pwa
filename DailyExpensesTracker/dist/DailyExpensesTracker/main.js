@@ -301,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
 var Service = /** @class */ (function () {
     function Service() {
         this.repository = new _repository__WEBPACK_IMPORTED_MODULE_0__["Repository"]();
-        this.total = 4000;
+        this.total = 3200;
     }
     Service.prototype.addExpense = function (date, amount) {
         this.repository.insert({
