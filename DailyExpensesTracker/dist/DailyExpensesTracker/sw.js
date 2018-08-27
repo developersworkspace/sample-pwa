@@ -1,5 +1,5 @@
 const version = '0.0.6';
-const cacheName = `daily-expense-tracer-${version}`;
+const cacheName = `daily-expenses-tracer-${version}`;
 
 self.addEventListener('install', e => {
   e.waitUntil(
