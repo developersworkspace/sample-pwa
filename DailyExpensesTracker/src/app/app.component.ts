@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
   }
 
   public onClickSubmit(): void {
+    if (!this.inputAmount || !this.inputDate) {
+      return;
+    }
+
     this.service.addExpense(new Date(this.inputDate), this.inputAmount);
 
     this.inputAmount = null;

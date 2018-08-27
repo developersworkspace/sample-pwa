@@ -160,6 +160,9 @@ var AppComponent = /** @class */ (function () {
         this.updateChart();
     };
     AppComponent.prototype.onClickSubmit = function () {
+        if (!this.inputAmount || !this.inputDate) {
+            return;
+        }
         this.service.addExpense(new Date(this.inputDate), this.inputAmount);
         this.inputAmount = null;
         this.inputDate = null;
