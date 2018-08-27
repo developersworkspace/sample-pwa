@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
               y: expense.amount,
             };
           }),
-          name: 'aaa',
+          name: 'Daily Expenses',
         },
       ],
       xAxis: {

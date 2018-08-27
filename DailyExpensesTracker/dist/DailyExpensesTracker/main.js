@@ -183,7 +183,7 @@ var AppComponent = /** @class */ (function () {
                             y: expense.amount,
                         };
                     }),
-                    name: 'aaa',
+                    name: 'Daily Expenses',
                 },
             ],
             xAxis: {
