@@ -38,6 +38,27 @@ export class Service {
     return dailyLimit;
   }
 
+  public getExpenses(): Array<{ amount: number; date: number }> {
+    const expenses: Array<{ amount: number; date: number }> = this.repository.list(
+      this.getStartDate(),
+      this.getEndDate(),
+    );
+
+    const expensesByDate: Array<{ amount: number; date: number }> = [];
+
+    for (const expense of expenses) {
+      const existingExpenseByDate: { amount: number; date: number } = expensesByDate.find((x) => x.date === expense.date);
+
+      if (existingExpenseByDate) {
+        existingExpenseByDate.amount += expense.amount;
+      } else {
+        expensesByDate.push(expense);
+      }
+    }
+
+    return expensesByDate;
+  }
+
   protected calculateTotalSpent(): number {
     const expenses: Array<{ amount: number; date: number }> = this.repository.list(
       this.getStartDate(),
@@ -80,21 +101,21 @@ export class Service {
     }
   }
 
-  public getNumberOfDaysPast(): number {
+  protected getNumberOfDaysPast(): number {
     const startDate: Date = this.getStartDate();
     const currentDate: Date = new Date();
 
     return (currentDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24;
   }
 
-  public getNumberOfDaysRemaining(): number {
+  protected getNumberOfDaysRemaining(): number {
     const endDate: Date = this.getEndDate();
     const currentDate: Date = new Date();
 
     return (endDate.getTime() - currentDate.getTime()) / 1000 / 60 / 60 / 24;
   }
 
-  public getStartDate(): Date {
+  protected getStartDate(): Date {
     const currentDay: number = new Date().getDate();
 
     if (currentDay >= 25) {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { Repository } from './repository';
 import { Service } from './service';
 
 @Component({
@@ -12,6 +11,7 @@ export class AppComponent implements OnInit {
   public chart = null;
 
   public dailyExpensesLimit = 0;
+
   public dailyExpensesLimitAdvanced = 0;
 
   public inputAmount: number = null;
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
     this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
+    this.updateChart();
   }
 
   public onClickSubmit(): void {
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
 
     this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
     this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
+    this.updateChart();
   }
 
   protected updateChart(): void {
@@ -47,12 +49,12 @@ export class AppComponent implements OnInit {
       },
       series: [
         {
-          data: [
-            {
-              x: new Date().getTime(),
-              y: 10,
-            },
-          ],
+          data: this.service.getExpenses().map((expense) => {
+            return {
+              x: expense.date,
+              y: expense.amount,
+            };
+          }),
           name: 'aaa',
         },
       ],
