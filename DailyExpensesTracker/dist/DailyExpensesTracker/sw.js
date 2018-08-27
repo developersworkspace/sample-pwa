@@ -1,4 +1,4 @@
-const version = '0.0.5';
+const version = '0.0.6';
 const cacheName = `daily-expense-tracer-${version}`;
 
 self.addEventListener('install', e => {

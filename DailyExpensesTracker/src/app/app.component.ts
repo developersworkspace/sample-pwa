@@ -22,13 +22,13 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
-  public ngOnInit(): void {
-    this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
-    this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
+  public async ngOnInit(): Promise<void> {
+    this.dailyExpensesLimit = await this.service.calculateDailyExpensesLimit();
+    this.dailyExpensesLimitAdvanced = await this.service.calculateDailyExpensesLimitAdvanced();
     this.updateChart();
   }
 
-  public onClickSubmit(): void {
+  public async onClickSubmit(): Promise<void> {
     if (!this.inputAmount || !this.inputDate) {
       return;
     }
@@ -38,12 +38,12 @@ export class AppComponent implements OnInit {
     this.inputAmount = null;
     this.inputDate = null;
 
-    this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
-    this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
+    this.dailyExpensesLimit = await this.service.calculateDailyExpensesLimit();
+    this.dailyExpensesLimitAdvanced = await this.service.calculateDailyExpensesLimitAdvanced();
     this.updateChart();
   }
 
-  protected updateChart(): void {
+  protected async updateChart(): Promise<void> {
     this.chart = new Chart({
       chart: {
         type: 'line',
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
       },
       series: [
         {
-          data: this.service.getExpenses().map((expense) => {
+          data: (await this.service.getExpenses()).map((expense) => {
             return {
               x: expense.date,
               y: expense.amount,

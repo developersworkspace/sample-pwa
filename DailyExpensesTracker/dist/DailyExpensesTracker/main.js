@@ -142,6 +142,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var angular_highcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular-highcharts */ "./node_modules/angular-highcharts/angular-highcharts.es5.js");
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./service */ "./src/app/service.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
@@ -155,48 +190,92 @@ var AppComponent = /** @class */ (function () {
         this.service = new _service__WEBPACK_IMPORTED_MODULE_2__["Service"]();
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
-        this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
-        this.updateChart();
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.service.calculateDailyExpensesLimit()];
+                    case 1:
+                        _a.dailyExpensesLimit = _c.sent();
+                        _b = this;
+                        return [4 /*yield*/, this.service.calculateDailyExpensesLimitAdvanced()];
+                    case 2:
+                        _b.dailyExpensesLimitAdvanced = _c.sent();
+                        this.updateChart();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     AppComponent.prototype.onClickSubmit = function () {
-        if (!this.inputAmount || !this.inputDate) {
-            return;
-        }
-        this.service.addExpense(new Date(this.inputDate), this.inputAmount);
-        this.inputAmount = null;
-        this.inputDate = null;
-        this.dailyExpensesLimit = this.service.calculateDailyExpensesLimit();
-        this.dailyExpensesLimitAdvanced = this.service.calculateDailyExpensesLimitAdvanced();
-        this.updateChart();
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (!this.inputAmount || !this.inputDate) {
+                            return [2 /*return*/];
+                        }
+                        this.service.addExpense(new Date(this.inputDate), this.inputAmount);
+                        this.inputAmount = null;
+                        this.inputDate = null;
+                        _a = this;
+                        return [4 /*yield*/, this.service.calculateDailyExpensesLimit()];
+                    case 1:
+                        _a.dailyExpensesLimit = _c.sent();
+                        _b = this;
+                        return [4 /*yield*/, this.service.calculateDailyExpensesLimitAdvanced()];
+                    case 2:
+                        _b.dailyExpensesLimitAdvanced = _c.sent();
+                        this.updateChart();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     AppComponent.prototype.updateChart = function () {
-        this.chart = new angular_highcharts__WEBPACK_IMPORTED_MODULE_1__["Chart"]({
-            chart: {
-                type: 'line',
-            },
-            title: {
-                text: undefined,
-            },
-            series: [
-                {
-                    data: this.service.getExpenses().map(function (expense) {
-                        return {
-                            x: expense.date,
-                            y: expense.amount,
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c, _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _a = this;
+                        _b = angular_highcharts__WEBPACK_IMPORTED_MODULE_1__["Chart"].bind;
+                        _c = {
+                            chart: {
+                                type: 'line',
+                            },
+                            title: {
+                                text: undefined,
+                            }
                         };
-                    }),
-                    name: 'Daily Expenses',
-                },
-            ],
-            xAxis: {
-                type: 'datetime',
-            },
-            yAxis: {
-                title: {
-                    text: 'Amount',
-                },
-            },
+                        _d = {};
+                        return [4 /*yield*/, this.service.getExpenses()];
+                    case 1:
+                        _a.chart = new (_b.apply(angular_highcharts__WEBPACK_IMPORTED_MODULE_1__["Chart"], [void 0, (_c.series = [
+                                (_d.data = (_e.sent()).map(function (expense) {
+                                    return {
+                                        x: expense.date,
+                                        y: expense.amount,
+                                    };
+                                }),
+                                    _d.name = 'Daily Expenses',
+                                    _d)
+                            ],
+                                _c.xAxis = {
+                                    type: 'datetime',
+                                },
+                                _c.yAxis = {
+                                    title: {
+                                        text: 'Amount',
+                                    },
+                                },
+                                _c)]))();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     return AppComponent;
@@ -274,19 +353,97 @@ var AppModule = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Repository", function() { return Repository; });
+/* harmony import */ var idb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! idb */ "./node_modules/idb/lib/idb.js");
+/* harmony import */ var idb__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(idb__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
 var Repository = /** @class */ (function () {
     function Repository() {
     }
     Repository.prototype.insert = function (obj) {
-        var json = localStorage.getItem('expenses');
-        var expenses = json ? JSON.parse(json) : [];
-        expenses.push(obj);
-        localStorage.setItem('expenses', JSON.stringify(expenses));
+        return __awaiter(this, void 0, void 0, function () {
+            var objectStore;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getObjectStore()];
+                    case 1:
+                        objectStore = _a.sent();
+                        objectStore.add(obj);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     Repository.prototype.list = function (startDate, endDate) {
-        var json = localStorage.getItem('expenses');
-        var expenses = json ? JSON.parse(json) : [];
-        return expenses.filter(function (expense) { return expense.date >= startDate.getTime() && expense.date <= endDate.getTime(); });
+        return __awaiter(this, void 0, void 0, function () {
+            var objectStore, expenses;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getObjectStore()];
+                    case 1:
+                        objectStore = _a.sent();
+                        return [4 /*yield*/, objectStore.getAll()];
+                    case 2:
+                        expenses = _a.sent();
+                        return [2 /*return*/, expenses
+                                .filter(function (expense) { return expense.date >= startDate.getTime() && expense.date <= endDate.getTime(); })
+                                .sort(function (a, b) {
+                                return a.date - b.date;
+                            })];
+                }
+            });
+        });
+    };
+    Repository.prototype.getObjectStore = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var database, transaction, objectStore;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, idb__WEBPACK_IMPORTED_MODULE_0___default.a.open('daily-expenses-tracker', 1, function (upgradeDB) {
+                            upgradeDB.createObjectStore('expenses', { autoIncrement: true, keyPath: 'id' });
+                        })];
+                    case 1:
+                        database = _a.sent();
+                        transaction = database.transaction('expenses', 'readwrite');
+                        objectStore = transaction.objectStore('expenses');
+                        return [2 /*return*/, objectStore];
+                }
+            });
+        });
     };
     return Repository;
 }());
@@ -306,6 +463,41 @@ var Repository = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Service", function() { return Service; });
 /* harmony import */ var _repository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./repository */ "./src/app/repository.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 var Service = /** @class */ (function () {
     function Service() {
@@ -319,47 +511,83 @@ var Service = /** @class */ (function () {
         });
     };
     Service.prototype.calculateDailyExpensesLimit = function () {
-        var totalSpent = this.calculateTotalSpent();
-        var remaining = this.total - totalSpent;
-        var dailyLimit = remaining / this.getNumberOfDaysRemaining();
-        return dailyLimit;
+        return __awaiter(this, void 0, void 0, function () {
+            var totalSpent, remaining, dailyLimit;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.calculateTotalSpent()];
+                    case 1:
+                        totalSpent = _a.sent();
+                        remaining = this.total - totalSpent;
+                        dailyLimit = remaining / this.getNumberOfDaysRemaining();
+                        return [2 /*return*/, dailyLimit];
+                }
+            });
+        });
     };
     Service.prototype.calculateDailyExpensesLimitAdvanced = function () {
-        var totalSpent = this.calculateTotalSpent();
-        var remaining = this.total - totalSpent;
-        var startDate = this.getStartDate();
-        var endDate = this.getEndDate();
-        var totalNumberOfDays = (endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24;
-        var initialDailyLimit = remaining / totalNumberOfDays;
-        var dailyLimit = this.getNumberOfDaysPast() * initialDailyLimit - totalSpent;
-        return dailyLimit;
+        return __awaiter(this, void 0, void 0, function () {
+            var totalSpent, remaining, startDate, endDate, totalNumberOfDays, initialDailyLimit, dailyLimit;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.calculateTotalSpent()];
+                    case 1:
+                        totalSpent = _a.sent();
+                        remaining = this.total - totalSpent;
+                        startDate = this.getStartDate();
+                        endDate = this.getEndDate();
+                        totalNumberOfDays = (endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24;
+                        initialDailyLimit = remaining / totalNumberOfDays;
+                        dailyLimit = this.getNumberOfDaysPast() * initialDailyLimit - totalSpent;
+                        return [2 /*return*/, dailyLimit];
+                }
+            });
+        });
     };
     Service.prototype.getExpenses = function () {
-        var expenses = this.repository.list(this.getStartDate(), this.getEndDate());
-        var expensesByDate = [];
-        var _loop_1 = function (expense) {
-            var existingExpenseByDate = expensesByDate.find(function (x) { return x.date === expense.date; });
-            if (existingExpenseByDate) {
-                existingExpenseByDate.amount += expense.amount;
-            }
-            else {
-                expensesByDate.push(expense);
-            }
-        };
-        for (var _i = 0, expenses_1 = expenses; _i < expenses_1.length; _i++) {
-            var expense = expenses_1[_i];
-            _loop_1(expense);
-        }
-        return expensesByDate;
+        return __awaiter(this, void 0, void 0, function () {
+            var expenses, expensesByDate, _loop_1, _i, expenses_1, expense;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repository.list(this.getStartDate(), this.getEndDate())];
+                    case 1:
+                        expenses = _a.sent();
+                        expensesByDate = [];
+                        _loop_1 = function (expense) {
+                            var existingExpenseByDate = expensesByDate.find(function (x) { return x.date === expense.date; });
+                            if (existingExpenseByDate) {
+                                existingExpenseByDate.amount += expense.amount;
+                            }
+                            else {
+                                expensesByDate.push(expense);
+                            }
+                        };
+                        for (_i = 0, expenses_1 = expenses; _i < expenses_1.length; _i++) {
+                            expense = expenses_1[_i];
+                            _loop_1(expense);
+                        }
+                        return [2 /*return*/, expensesByDate];
+                }
+            });
+        });
     };
     Service.prototype.calculateTotalSpent = function () {
-        var expenses = this.repository.list(this.getStartDate(), this.getEndDate());
-        var sum = 0;
-        for (var _i = 0, expenses_2 = expenses; _i < expenses_2.length; _i++) {
-            var expense = expenses_2[_i];
-            sum += expense.amount;
-        }
-        return sum;
+        return __awaiter(this, void 0, void 0, function () {
+            var expenses, sum, _i, expenses_2, expense;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repository.list(this.getStartDate(), this.getEndDate())];
+                    case 1:
+                        expenses = _a.sent();
+                        sum = 0;
+                        for (_i = 0, expenses_2 = expenses; _i < expenses_2.length; _i++) {
+                            expense = expenses_2[_i];
+                            sum += expense.amount;
+                        }
+                        return [2 /*return*/, sum];
+                }
+            });
+        });
     };
     Service.prototype.getEndDate = function () {
         var currentDay = new Date().getDate();

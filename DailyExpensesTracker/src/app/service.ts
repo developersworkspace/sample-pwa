@@ -12,8 +12,8 @@ export class Service {
     });
   }
 
-  public calculateDailyExpensesLimit(): number {
-    const totalSpent: number = this.calculateTotalSpent();
+  public async calculateDailyExpensesLimit(): Promise<number> {
+    const totalSpent: number = await this.calculateTotalSpent();
 
     const remaining: number = this.total - totalSpent;
     const dailyLimit: number = remaining / this.getNumberOfDaysRemaining();
@@ -21,8 +21,8 @@ export class Service {
     return dailyLimit;
   }
 
-  public calculateDailyExpensesLimitAdvanced(): number {
-    const totalSpent: number = this.calculateTotalSpent();
+  public async calculateDailyExpensesLimitAdvanced(): Promise<number> {
+    const totalSpent: number = await this.calculateTotalSpent();
 
     const remaining: number = this.total - totalSpent;
 
@@ -38,8 +38,8 @@ export class Service {
     return dailyLimit;
   }
 
-  public getExpenses(): Array<{ amount: number; date: number }> {
-    const expenses: Array<{ amount: number; date: number }> = this.repository.list(
+  public async getExpenses(): Promise<Array<{ amount: number; date: number }>> {
+    const expenses: Array<{ amount: number; date: number }> = await this.repository.list(
       this.getStartDate(),
       this.getEndDate(),
     );
@@ -59,8 +59,8 @@ export class Service {
     return expensesByDate;
   }
 
-  protected calculateTotalSpent(): number {
-    const expenses: Array<{ amount: number; date: number }> = this.repository.list(
+  protected async calculateTotalSpent(): Promise<number> {
+    const expenses: Array<{ amount: number; date: number }> = await this.repository.list(
       this.getStartDate(),
       this.getEndDate(),
     );
